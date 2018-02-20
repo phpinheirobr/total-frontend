@@ -9,7 +9,9 @@
  * Main module of the application.
  */
 angular
-  .module('totalAutoCenterApp', [
+  .module('totalAutoCenterApp', [ 
+    'ngMaterial',
+    'ngMessages',
     'ngAnimate',
     'ngCookies',
     'ngResource',
