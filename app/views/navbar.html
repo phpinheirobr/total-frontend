@@ -1,7 +1,27 @@
-<div layout="row" layout-padding class="bg-dark-blue nav-dark" layout-align="space-between center">
+<div layout="row" layout-padding class="bg-dark-blue nav-dark" layout-align="space-between center" ng-controller="MainCtrl">
 
+<div>
+           <md-icon md-svg-src="images/hamburger.svg" ng-click="toggleLeft()"
+            class="md-primary" hide-gt-md>
+            Toggle left
+          </md-icon>
+        </div>
 <div>
      <img ng-src="images/logo-total.png"/>
    
 </div>
 </div>
+
+
+<md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-whiteframe="4">
+
+      <md-toolbar >
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+     
+
+    </md-sidenav>
