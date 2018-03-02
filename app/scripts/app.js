@@ -13,25 +13,32 @@ angular
     'ngMaterial',
     'ngMessages',
     'ngAnimate',
+    'md-steppers',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+       .when('/servicos', {
+        templateUrl: '/views/servicos.html',
+        controller: 'ServicoCtrl',
+        controllerAs: 'servico'
+      })
+       .when('/novoServico', {
+        templateUrl: '/views/novo-servico.html',
+        controller: 'NovoServicoCtrl',
+        controllerAs: 'novoServico'
       })
       .otherwise({
         redirectTo: '/'
       });
+       $locationProvider.html5Mode({enabled: true, requireBase: false});
   });

@@ -9,15 +9,24 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/md-steppers/dist/md-steppers.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    
   </head>
   <body ng-app="totalAutoCenterApp">
-<div ng-include="'views/navbar.html'"></div>
-   
+<!--<div ng-include="'views/navbar.html'"></div>-->
+   <div>
+   <navbar />
+   </navbar>
+   </div>
+   <div>
+   <menubar ng-if="$root.flabAbaServicos">
+   </menubar>
+   </div>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -42,17 +51,12 @@
         </div>
       </div>
     </div> --> 
-
-    <div class="container">
+  <div>
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
+    
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -77,6 +81,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/md-steppers/dist/md-steppers.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -84,6 +89,11 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/servico.js"></script>
+        <script src="scripts/controllers/novo-servico.js"></script>
+        <script src="scripts/directives/navbar.js"></script>
+        <script src="scripts/directives/menubar.js"></script>
+        <script src="scripts/services/apiFipe.js"></script>
         <!-- endbuild -->
 </body>
 </html>

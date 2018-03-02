@@ -8,7 +8,7 @@
  * Controller of the totalAutoCenterApp
  */
 angular.module('totalAutoCenterApp')
-  .controller('MainCtrl',['$scope', '$timeout', '$mdSidenav', '$log', function ($scope, $timeout, $mdSidenav, $log) {
+  .controller('MainCtrl',['$scope', '$rootScope', '$timeout', '$mdSidenav', '$log', function ($scope, $rootScope, $timeout, $mdSidenav, $log) {
     
     $scope.toggleLeft = buildDelayedToggler('left');
     
@@ -35,8 +35,23 @@ angular.module('totalAutoCenterApp')
           .toggle()
           .then(function () {
             $log.debug("toggle " + navID + " is done");
+
           });
       }, 200);
     }
+
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close LEFT is done");
+      habilitarAbaServicos();                
+        });
+
+    };
+      var habilitarAbaServicos = function () {
+        $rootScope.flabAbaServicos = true;
+      }
+
 
   }]);

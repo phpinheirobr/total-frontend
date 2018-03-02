@@ -1,16 +1,26 @@
-<div layout="row" layout-padding class="bg-dark-blue nav-dark" layout-align="space-between center" ng-controller="MainCtrl">
+<md-toolbar ng-controller="MainCtrl" layout="row">
 
-<div>
-           <md-icon md-svg-src="images/hamburger.svg" ng-click="toggleLeft()"
+ <div class="md-toolbar-tools">
+
+ <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+           <md-icon md-svg-src="images/menu.svg" 
             class="md-primary" hide-gt-md>
-            Toggle left
+            
           </md-icon>
+          </md-button>
+          
+           <md-icon class="md-toolbar-tools" style="width:140px;height:140px;" class="material-icons"  md-svg-src="images/logo-total.svg">
+            
+          </md-icon>
+
+        
+          <md-list-item  dir="rtl">
+            <img  ng-src="images/photo.jpg" class="md-avatar" />
+          </md-list-item>  
+          
         </div>
-<div>
-     <img ng-src="images/logo-total.png"/>
-   
-</div>
-</div>
+</md-toolbar>
+
 
 
 <md-sidenav
@@ -20,8 +30,17 @@
         md-whiteframe="4">
 
       <md-toolbar >
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        <h1 class="md-toolbar-tools">Menu</h1>
       </md-toolbar>
-     
+      
+       <md-button  class="md-toolbar-tools">
+       <a ng-controller="MainCtrl" ng-click="close()" href="/servicos">Serviços</a> 
+
+<md-icon  md-svg-src="images/wrench.svg"/>
+       </md-button>
+       <md-button class="md-toolbar-tools"> 
+Clientes
+<md-icon md-svg-src="images/account-multiple-outline.svg"/>
+       </md-button>
 
     </md-sidenav>
