@@ -8,9 +8,18 @@ angular.module('totalAutoCenterApp')
 		.then(function (response){
 			return response.data;
 		});
-	}		
+	}	
+
+	var getModelos = function(modeloId) {	
+		
+		return $http.get('http://fipeapi.appspot.com/api/1/carros/veiculos/'+ modeloId + '.json')
+		.then(function (response){
+			return response.data;
+		});
+	}				
 		return {
-			getMarcas
+			getMarcas,
+			getModelos 
 		};
 
 }]);

@@ -17,10 +17,10 @@
                             <md-step-body>
                                 <form name="step1" ng-submit="vm.submitCurrentStep(vm.stepData[0].data)">
                                     <md-content class="md-padding">
-                                        <div layout="row" layout-align="center top">
-                                            <div flex="row" style="width: 100%">
+                                        
                                                 <!--<h4>Please enter your user name and password</h4>-->
-                                                <md-input-container class="md-block">
+                                                <div layout="row" class="md-padding">
+                                                <md-input-container >
                                                     <label>Placa</label>
                                                     <input ng-disabled="vm.stepData[0].data.completed" name="username" ng-model="vm.stepData[0].data.username" required />
                                                     <div ng-messages="step1.username.$error">
@@ -29,17 +29,38 @@
                                                         </div>
                                                     </div>
                                                 </md-input-container>
-                                                <div layout="flex">
+                                                </div>
+                                                <div layout="row">
             
-                <md-select placeholder="Selecione uma marca" ng-model="vm.marca">
-                
-                 <md-option ng-value="marca" ng-repeat="marca in vm.marcas"> {{marca.name}}
+                <md-select ng-change="vm.getModelos()" class="md-padding" placeholder="Selecione uma marca" ng-model="vm.marca">
+                <md-optgroup label= "Marcas">
+                 <md-option  ng-value="marca" ng-repeat="marca in vm.marcas">
+                  {{marca.name}}
                  </md-option>
-                  
+                  </md-optgroup>
                 </md-select>
               
-            </div>
-                                            </div>
+
+            
+                <md-select   class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo">
+                <md-optgroup label= "Modelos">
+                 <md-option ng-value="modelo" ng-repeat="modelo in vm.modelos">
+                  {{modelo.name}}
+                 </md-option>
+                  </md-optgroup>
+                </md-select>
+
+                <md-select ng-change="vm.getAno()" class="md-padding"  placeholder="Selecione o ano" ng-model="vm.ano">
+                <md-optgroup label= "Ano">
+                 <md-option ng-value="ano" ng-repeat="ano in vm.anos">
+                  {{ano}}
+                 </md-option>
+                  </md-optgroup>
+                </md-select>
+              
+              
+                                
+                                            
                                         </div>
                                     </md-content>
                                     <md-step-actions layout="row">

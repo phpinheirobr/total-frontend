@@ -4,6 +4,7 @@ angular.module('totalAutoCenterApp')
   	var vm = this;
 
   	vm.marcas = [];	
+  	vm.modelos = [];	
   	vm.marca;
   	vm.selectedStep = 0;
     vm.stepProgress = 1;
@@ -16,6 +17,9 @@ angular.module('totalAutoCenterApp')
     ];
 
     vm.getSelectedText	= getSelectedText;
+    
+
+    
     var getSelectedText = function() {
         if ($scope.marca !== undefined) {
           
@@ -61,9 +65,19 @@ angular.module('totalAutoCenterApp')
             vm.enableNextStep();
         }
     }
+
+    	vm.getModelos = function() {
+    		ApiFipeService.getModelos(vm.marca.id).then(function(response){
+    						vm.modelos = response;
+    		});	
+    };	
+
+
+
     	 function init(){
           ApiFipeService.getMarcas().then(function(response){
           					vm.marcas = response;
+          					vm.modelo = {};
           });
         };  	
           
