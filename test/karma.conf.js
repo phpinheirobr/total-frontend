@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/angular-messages/angular-messages.js',
       'bower_components/angular-material/angular-material.js',
       'bower_components/md-steppers/dist/md-steppers.js',
+      'bower_components/ng-mask/ng-mask-1.0.1.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

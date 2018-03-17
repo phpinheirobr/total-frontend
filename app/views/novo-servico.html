@@ -12,61 +12,93 @@
                     </div>
                 </md-toolbar>
                 <md-stepper-card-content class="md-no-padding">
-                    <md-steppers md-dynamic-height md-disable-tabs-behavior="true" md-stretch-steppers="always" md-selected="vm.selectedStep" md-busy-text="'Processing...'" md-busy="vm.showBusyText">
+                    <md-steppers md-dynamic-height md-disable-tabs-behavior="true" md-stretch-steppers="always" md-selected="vm.selectedStep" md-busy-text="'Processando...'" md-busy="vm.showBusyText">
                         <md-step label="Veículo" md-complete="vm.stepData[0].data.completed" ng-disabled="vm.stepProgress < 1">
                             <md-step-body>
-                                <form name="step1" ng-submit="vm.submitCurrentStep(vm.stepData[0].data)">
+                                <form novalidate name="formVeiculo" ng-submit="vm.submitCurrentStep(vm.stepData[0].data)">
                                     <md-content class="md-padding">
                                         
                                                 <!--<h4>Please enter your user name and password</h4>-->
                                                 <div layout="row" class="md-padding">
                                                 <md-input-container >
-                                                    <label>Placa</label>
-                                                    <input ng-disabled="vm.stepData[0].data.completed" name="username" ng-model="vm.stepData[0].data.username" required />
-                                                    <div ng-messages="step1.username.$error">
+                                                    <label>PLACA</label>
+                                                    <input type="text" ui-mask="AAA - 9999" 
+                                                    name="placa" ng-model="vm.veiculo.placa" required uppercased/>
+                                                    <div ng-messages="formVeiculo.placa.$error">
                                                         <div ng-message="required">
                                                             Placa é um campo obrigatório.
                                                         </div>
                                                     </div>
                                                 </md-input-container>
                                                 </div>
-                                                <div layout="row">
-            
-                <md-select ng-change="vm.getModelos()" class="md-padding" placeholder="Selecione uma marca" ng-model="vm.marca">
-                <md-optgroup label= "Marcas">
-                 <md-option  ng-value="marca" ng-repeat="marca in vm.marcas">
-                  {{marca.name}}
+        <div layout="row">
+        
+            <md-input-container>
+            <label>MARCA</label>
+                <md-select name="marca"  ng-change="vm.getModelos()" class="md-padding" placeholder="Selecione uma marca" ng-model="vm.marca" required>
+                
+                 <md-option   ng-value="marca" ng-repeat="marca in vm.marcas">
+                  {{marca.nome}}
                  </md-option>
-                  </md-optgroup>
-                </md-select>
+                
+
+                  </md-select>
               
+              
+              <div  ng-messages="formVeiculo.marca.$error">
+                       <div ng-message="required">
+                     
+                     Marca é um campo obrigatório.
+                        </div>
+                 </div>                                           
+                </md-input-container>
+            <md-input-container>
 
-            
-                <md-select   class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo">
-                <md-optgroup label= "Modelos">
-                 <md-option ng-value="modelo" ng-repeat="modelo in vm.modelos">
-                  {{modelo.name}}
+
+            <label>MODELO</label>
+                <md-select ng-change="vm.getAno()"  name="modelo" class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo" required>
+                
+                 <md-option ng-value="modelo" ng-repeat="modelo in vm.modelos.modelos">
+                  {{modelo.nome}}
                  </md-option>
-                  </md-optgroup>
+                
                 </md-select>
+                <div  ng-messages="formVeiculo.modelo.$error">
+                       <div ng-message="required">
+                     
+                     Modelo é um campo obrigatório.
+                        </div>
+                 </div>                                           
+                
+                  </md-input-container>
+            
+            <md-input-container>
 
-                <md-select ng-change="vm.getAno()" class="md-padding"  placeholder="Selecione o ano" ng-model="vm.ano">
-                <md-optgroup label= "Ano">
+
+                <label>ANO</label>
+            
+
+                <md-select  name="ano" ng-class="{'md-select-fixed-width':true}"   class="md-padding"  placeholder="Selecione o ano" ng-model="vm.ano" required>
+                
                  <md-option ng-value="ano" ng-repeat="ano in vm.anos">
-                  {{ano}}
+                  {{ano.nome}}
                  </md-option>
-                  </md-optgroup>
+                
                 </md-select>
-              
-              
-                                
-                                            
-                                        </div>
+                <div  ng-messages="formVeiculo.ano.$error">
+                       <div ng-message="required">
+                     
+                     Ano é um campo obrigatório.
+                        </div>
+                 </div>                                           
+                
+                  </md-input-container>
+        </div>
                                     </md-content>
                                     <md-step-actions layout="row">
                                         <div flex layout="row" layout-align="end top">
                                             <md-button class="md-warn">CANCELAR</md-button>
-                                            <md-button type="submit" ng-disabled="!vm.stepData[0].data.username || !vm.stepData[0].data.password || vm.showBusyText" class="md-primary md-raised">AVANÇAR</md-button>
+                                            <md-button class="md-primary md-raised" type="submit" ng-disabled="formVeiculo.$invalid">AVANÇAR</md-button>
                                         </div>
                                     </md-step-actions>
                                 </form>

@@ -13,6 +13,7 @@ angular
     'ngMaterial',
     'ngMessages',
     'ngAnimate',
+    'ui.mask',
     'md-steppers',
     'ngCookies',
     'ngResource',
