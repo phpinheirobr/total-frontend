@@ -56,7 +56,7 @@
 
 
             <label>MODELO</label>
-                <md-select ng-change="vm.getAno()"  name="modelo" class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo" required>
+                <md-select ng-change="vm.getAnos()"  name="modelo" class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo" required>
                 
                  <md-option ng-value="modelo" ng-repeat="modelo in vm.modelos.modelos">
                   {{modelo.nome}}

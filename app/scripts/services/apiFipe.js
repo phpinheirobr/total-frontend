@@ -8,7 +8,7 @@ angular.module('totalAutoCenterApp')
 		.then(function (response){
 			return response.data;
 		});
-	}	
+	}		
 
 	var getModelos = function(marcaId) {	
 		
@@ -16,10 +16,19 @@ angular.module('totalAutoCenterApp')
 		.then(function (response){
 			return response.data;
 		});
-	}				
+	}
+
+	var getAnos = function(marcaId, modeloId) {	
+		
+		return $http.get('https://fipe.parallelum.com.br/api/v1/carros/marcas/'+ marcaId +'/modelos/'+ modeloId +'/anos')
+		.then(function (response){
+			return response.data;
+		});
+	}								
 		return {
 			getMarcas,
-			getModelos 
+			getModelos,
+			getAnos 
 		};
 
 }]);

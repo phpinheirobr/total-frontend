@@ -6,6 +6,7 @@ angular.module('totalAutoCenterApp')
   	vm.marcas = [];	
   	vm.modelos = [];	
   	vm.marca;
+  	vm.modelo;
   	vm.selectedStep = 0;
     vm.stepProgress = 1;
     vm.maxStep = 3;
@@ -72,6 +73,11 @@ angular.module('totalAutoCenterApp')
     		});	
     };	
 
+    	vm.getAnos = function() {
+    		ApiFipeService.getAnos(vm.marca.codigo, vm.modelo.codigo).then(function(response){
+    						vm.anos = response;
+    		});	
+    };	
 
 
     	 function init(){
