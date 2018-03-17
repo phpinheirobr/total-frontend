@@ -33,7 +33,7 @@
                                                 </div>
         <div layout="row">
         
-            <md-input-container>
+            <md-input-container style="width:100%;">
             <label>MARCA</label>
                 <md-select name="marca"  ng-change="vm.getModelos()" class="md-padding" placeholder="Selecione uma marca" ng-model="vm.marca" required>
                 
@@ -52,11 +52,11 @@
                         </div>
                  </div>                                           
                 </md-input-container>
-            <md-input-container>
+            <md-input-container style="width:100%;">
 
 
             <label>MODELO</label>
-                <md-select ng-change="vm.getAnos()"  name="modelo" class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo" required>
+                <md-select  ng-change="vm.getAnos()"  name="modelo" class="md-padding" ng-model="vm.modelo" placeholder="Selecione o Modelo" required>
                 
                  <md-option ng-value="modelo" ng-repeat="modelo in vm.modelos.modelos">
                   {{modelo.nome}}
@@ -72,7 +72,7 @@
                 
                   </md-input-container>
             
-            <md-input-container>
+            <md-input-container style="width:100%;">
 
 
                 <label>ANO</label>
@@ -106,30 +106,40 @@
                         </md-step>
                         <md-step label="Cliente" md-complete="vm.stepData[1].data.completed" ng-disabled="vm.stepProgress < 2">
                             <md-step-body>
-                                <form name="step2">
+                                <form name="formCliente">
                                     <md-content class="md-padding">
-                                        <div layout="row" layout-align="center top">
-                                            <div flex="nogrow" style="width: 400px">
-                                                <h4>Please enter your full name</h4>
-                                                <md-input-container class="md-block">
-                                                    <label>Your first name here</label>
-                                                    <input name="firsname" ng-model="vm.stepData[1].data.firsname"/>
+                                            <div layout="row">
+                                                <md-input-container style="width:100%;">
+                                                    <label>Nome</label>
+                                                    <input name="nome" ng-model="vm.stepData[1].data.firsname" required/>
+                                               <div  ng-messages="formCliente.nome.$error">
+                                                   <div ng-message="required">
+                     
+                                                     Nome é um campo obrigatório.
+                                                    </div>
+                                             </div>
                                                 </md-input-container>
-                                                <md-input-container class="md-block">
-                                                    <label>Your last name</label>
-                                                    <input name="lastname" ng-model="vm.stepData[1].data.lastname"/>
+                                                <md-input-container style="width:100%;">
+                                                    <label>Sobrenome</label>
+                                                    <input name="sobrenome" ng-model="vm.stepData[1].data.lastname" required/>
+                                                <div  ng-messages="formCliente.sobrenome.$error">
+                                                   <div ng-message="required">
+                     
+                                                     Sobrenome é um campo obrigatório.
+                                                    </div>
+                                             </div>
+
                                                 </md-input-container>
                                             </div>
-                                        </div>
-                                    </md-content>
+                                            </md-content>
                                     <md-step-actions layout="row">
                                         <div flex>
-                                            <md-button ng-click="vm.moveToPreviousStep()">PREVIOUS</md-button>
+                                            <md-button ng-click="vm.moveToPreviousStep()">VOLTAR</md-button>
                                         </div>
                                         <div flex layout="row" layout-align="end top">
-                                            <md-button class="md-warn">CANCEL</md-button>
+                                            <md-button class="md-warn">CANCELAR</md-button>
                                             <md-button ng-disabled="vm.showBusyText" ng-click="vm.submitCurrentStep(vm.stepData[1].data, !(vm.stepData[1].data.firsname && vm.stepData[1].data.lastname))" class="md-primary md-raised">
-                                                {{ vm.stepData[1].data.firsname && vm.stepData[1].data.lastname ? 'NEXT' : 'SKIP' }}
+                                                AVANÇAR
                                             </md-button>
                                         </div>
                                     </md-step-actions>
