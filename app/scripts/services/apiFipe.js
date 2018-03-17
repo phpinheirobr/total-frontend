@@ -4,15 +4,15 @@ angular.module('totalAutoCenterApp')
 		
 		var getMarcas = function() {	
 		
-		return $http.get('http://fipeapi.appspot.com/api/1/carros/marcas.json')
+		return $http.get('https://fipe.parallelum.com.br/api/v1/carros/marcas')
 		.then(function (response){
 			return response.data;
 		});
 	}	
 
-	var getModelos = function(modeloId) {	
+	var getModelos = function(marcaId) {	
 		
-		return $http.get('http://fipeapi.appspot.com/api/1/carros/veiculos/'+ modeloId + '.json')
+		return $http.get('https://fipe.parallelum.com.br/api/v1/carros/marcas/'+ marcaId +'/modelos')
 		.then(function (response){
 			return response.data;
 		});

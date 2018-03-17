@@ -67,7 +67,7 @@ angular.module('totalAutoCenterApp')
     }
 
     	vm.getModelos = function() {
-    		ApiFipeService.getModelos(vm.marca.id).then(function(response){
+    		ApiFipeService.getModelos(vm.marca.codigo).then(function(response){
     						vm.modelos = response;
     		});	
     };	
