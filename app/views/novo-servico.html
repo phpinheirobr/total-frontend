@@ -1,6 +1,6 @@
 
 <md-card  layout="row">
-    <md-content ng-controller="NovoServicoCtrl as vm" flex="nogrow" style="width: 800px; margin: 40px auto">
+    <md-content ng-init="vm.init()" ng-controller="NovoServicoCtrl as vm" flex="nogrow" style="width: 800px; margin: 40px auto">
         <div>
             <md-card>
                 <md-toolbar>
@@ -21,8 +21,8 @@
                                                 <!--<h4>Please enter your user name and password</h4>-->
                                                 <div layout="row" class="md-padding">
                                                 <md-input-container >
-                                                    <label>PLACA</label>
-                                                    <input type="text" ui-mask="AAA - 9999" 
+                                                    <label>Placa</label>
+                                                    <input type="text" ui-mask-placeholder-char="space" ui-mask="AAA 9999"  
                                                     name="placa" ng-model="vm.veiculo.placa" required uppercased/>
                                                     <div ng-messages="formVeiculo.placa.$error">
                                                         <div ng-message="required">
@@ -93,8 +93,31 @@
                  </div>                                           
                 
                   </md-input-container>
+
+
         </div>
-                                    </md-content>
+        <div layout="row " class="md-padding">
+        <md-input-container style="width:100%;">
+            <label>Quilometragem</label>
+            <input type="number"  ng-max="5" name="quilometragem" ng-model="vm.veiculo.quilometragem" required/>
+               <div  ng-messages="formVeiculo.quilometragem.$error">
+                    <div ng-message="required">
+                     Quilomentragem é um campo obrigatório.
+                    </div>
+                </div>
+
+        </md-input-container>
+        </div>
+    </md-content>
+               <div layout="row">
+                  <md-input-container style="width:100%;">
+                  <lf-ng-md-file-input lf-files="files08" lf-drag-and-drop-label="Arraste a imagem!" lf-option="optoin08" lf-placeholder="Escolher Imagem" lf-browse-label="Tirar foto" lf-remove-label="Excluir" multiple drag preview ng-disabled="disabled06"></lf-ng-md-file-input>
+                
+
+
+
+                  </md-input-container>
+                </div>
                                     <md-step-actions layout="row">
                                         <div flex layout="row" layout-align="end top">
                                             <md-button class="md-warn">CANCELAR</md-button>

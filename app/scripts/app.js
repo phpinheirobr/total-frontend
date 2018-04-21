@@ -12,6 +12,7 @@ angular
   .module('totalAutoCenterApp', [ 
     'ngMaterial',
     'ngMessages',
+    'ui-notification',
     'ngAnimate',
     'ui.mask',
     'md-steppers',
@@ -19,9 +20,21 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'lfNgMdFileInput'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, NotificationProvider) {
+
+    NotificationProvider.setOptions({
+            delay: 3000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'right',
+            positionY: 'top'
+        });
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

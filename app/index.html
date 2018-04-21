@@ -9,7 +9,10 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css"/>
+    
     <link rel="stylesheet" href="bower_components/md-steppers/dist/md-steppers.css" />
+    <link rel="stylesheet" href="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -19,6 +22,7 @@
   </head>
   <body ng-app="totalAutoCenterApp">
 <!--<div ng-include="'views/navbar.html'"></div>-->
+
    <div>
    <navbar />
    </navbar>
@@ -27,6 +31,7 @@
    <menubar ng-if="$root.flabAbaServicos">
    </menubar>
    </div>
+
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -83,6 +88,8 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/md-steppers/dist/md-steppers.js"></script>
     <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+    <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+    <script src="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -95,6 +102,7 @@
         <script src="scripts/directives/navbar.js"></script>
         <script src="scripts/directives/menubar.js"></script>
         <script src="scripts/directives/uppercased.js"></script>
+        <script src="scripts/directives/maxlength.js"></script>
         <script src="scripts/services/apiFipe.js"></script>
         <!-- endbuild -->
 </body>

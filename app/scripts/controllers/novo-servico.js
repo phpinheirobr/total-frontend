@@ -1,8 +1,12 @@
 angular.module('totalAutoCenterApp')
-  .controller('NovoServicoCtrl',['$scope', '$q', '$timeout', 'ApiFipeService', function ($scope, $q, $timeout, ApiFipeService) {
+  .controller('NovoServicoCtrl',['$scope', '$q', '$timeout', 'ApiFipeService', 'Notification', function ($scope, $q, $timeout, ApiFipeService, Notification) {
 
   	var vm = this;
-
+    vm.init = init;
+    vm.getMarcas = getMarcas;
+        //messagens textos
+    var loadFipeMsg = '<strong>Ótimo</strong> Api integração com FIPE foi estabelecida';
+    
   	vm.marcas = [];	
   	vm.modelos = [];	
   	vm.marca;
@@ -16,6 +20,8 @@ angular.module('totalAutoCenterApp')
         { step: 2, completed: false, optional: false, data: {} },
         { step: 3, completed: false, optional: false, data: {} },
     ];
+
+    
 
     vm.getSelectedText	= getSelectedText;
     
@@ -79,15 +85,19 @@ angular.module('totalAutoCenterApp')
     		});	
     };	
 
+          function getMarcas() {
+                ApiFipeService.getMarcas().then(function(response){
+                            vm.marcas = response;
+                            vm.modelo = {};
+                            Notification.success(loadFipeMsg);
+          });
+        }
 
     	 function init(){
-          ApiFipeService.getMarcas().then(function(response){
-          					vm.marcas = response;
-          					vm.modelo = {};
-          });
+            vm.getMarcas();
         };  	
           
          
-        init();
+        
 
   }]);
