@@ -22,7 +22,7 @@
                                                 <div layout="row" class="md-padding">
                                                 <md-input-container >
                                                     <label>Placa</label>
-                                                    <input type="text" ui-mask-placeholder-char="space" ui-mask="AAA 9999"  
+                                                    <input type="text" ng-change="vm.changePlaca(vm.veiculo.placa)" ui-mask-placeholder-char="space" ui-mask="AAA 9999"  
                                                     name="placa" ng-model="vm.veiculo.placa" required uppercased/>
                                                     <div ng-messages="formVeiculo.placa.$error">
                                                         <div ng-message="required">

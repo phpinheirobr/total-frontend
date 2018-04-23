@@ -23,7 +23,14 @@ angular
     'ngTouch',
     'lfNgMdFileInput'
   ])
-  .config(function ($routeProvider, $locationProvider, NotificationProvider) {
+  .config(function ($routeProvider, $httpProvider, $locationProvider, NotificationProvider) {
+
+
+$httpProvider.defaults.useXDomain = true;
+$httpProvider.defaults.withCredentials = false;
+$httpProvider.defaults.headers.common["X-Requested-With"];
+$httpProvider.defaults.headers.common["Accept"] = "application/json";
+$httpProvider.defaults.headers.common["Content-Type"] = "application/json"
 
     NotificationProvider.setOptions({
             delay: 3000,

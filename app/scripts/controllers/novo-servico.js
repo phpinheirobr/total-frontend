@@ -1,12 +1,14 @@
 angular.module('totalAutoCenterApp')
-  .controller('NovoServicoCtrl',['$scope', '$q', '$timeout', 'ApiFipeService', 'Notification', function ($scope, $q, $timeout, ApiFipeService, Notification) {
+  .controller('NovoServicoCtrl',['$scope', '$q', '$timeout', 'ApiFipeService', 'ServicoService', 'Notification', function (
+    $scope, $q, $timeout, ApiFipeService, ServicoService, Notification) {
 
   	var vm = this;
     vm.init = init;
     vm.getMarcas = getMarcas;
         //messagens textos
+    var stabilishConecton = '<strong>Aguarde</strong> Estabelecendo conexão com API FIPE';
     var loadFipeMsg = '<strong>Ótimo</strong> Api integração com FIPE foi estabelecida';
-    
+    var loadFipeMsgError = '<strong>Sinto Muito</strong> Não foi possível estabelecer comunicação a com API FIPE';
   	vm.marcas = [];	
   	vm.modelos = [];	
   	vm.marca;
@@ -79,6 +81,12 @@ angular.module('totalAutoCenterApp')
     		});	
     };	
 
+        vm.getModelo = function(idMorca, idModelo) {
+            ApiFipeService.getModelo(idModelo).then(function(response){
+                        vm.modelo = response;                    
+            });
+        } 
+
     	vm.getAnos = function() {
     		ApiFipeService.getAnos(vm.marca.codigo, vm.modelo.codigo).then(function(response){
     						vm.anos = response;
@@ -86,12 +94,32 @@ angular.module('totalAutoCenterApp')
     };	
 
           function getMarcas() {
+            Notification.info(stabilishConecton);
                 ApiFipeService.getMarcas().then(function(response){
                             vm.marcas = response;
                             vm.modelo = {};
                             Notification.success(loadFipeMsg);
-          });
+          }).catch(function(error) {
+            Notification.error(loadFipeMsgError);
+    });
         }
+
+          vm.changePlaca = function (placa){
+            if(placa.length == 7){
+             ServicoService.getDataFipe(placa).then(function (response){
+                    vm.carregarComboVeiculo(response);
+             })};
+          } 
+
+           vm.carregarComboVeiculo = function (fipeData){
+            angular.forEach(vm.marcas, function(marca){
+                        if(marca.codigo ==  fipeData.id){
+                            vm.marca = marca;
+                        }
+            });
+
+            vm.getModelos()
+          }     
 
     	 function init(){
             vm.getMarcas();
